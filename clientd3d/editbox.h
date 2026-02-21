@@ -18,7 +18,7 @@ void EditBoxReset(int xsize, int ysize, AREA view);
 void EditBoxResize(int xsize, int ysize, AREA view);
 void EditBoxSetFocus(bool forward);
 void EditBoxDrawBorder(void);
-void EditBoxGetArea(AREA *a);
+M59EXPORT void EditBoxGetArea(AREA *a);
 HWND EditBoxWindow(void);
 
 void EditBoxResetFont(void);

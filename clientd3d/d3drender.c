@@ -150,7 +150,7 @@ D3DMATRIX view, mat, rot, trans, proj;
 // new render stuff
 void					D3DRenderPoolInit(d3d_render_pool_new *pPool, int size, int packetSize);
 void					D3DRenderPoolShutdown(d3d_render_pool_new *pPool);
-void					D3DRenderPoolReset(d3d_render_pool_new *pPool, void *pMaterialFunc);
+void					D3DRenderPoolReset(d3d_render_pool_new *pPool, MaterialFctn pMaterialFunc);
 d3d_render_packet_new	*D3DRenderPacketNew(d3d_render_pool_new *pPool);
 void					D3DRenderPacketInit(d3d_render_packet_new *pPacket);
 d3d_render_chunk_new	*D3DRenderChunkNew(d3d_render_packet_new *pPacket);
@@ -953,7 +953,7 @@ void D3DRenderPoolInit(d3d_render_pool_new *pPool, int size, int packetSize)
 	pPool->renderPacketList = list_create(pPacket);
 	pPool->packetSize = packetSize;
 
-	D3DRenderPoolReset(pPool, NULL);
+	D3DRenderPoolReset(pPool, nullptr);
 
 	for (i = 0; i < pPool->size; i++)
 	{
@@ -967,12 +967,12 @@ void D3DRenderPoolShutdown(d3d_render_pool_new *pPool)
 	memset(pPool, 0, sizeof(d3d_render_pool_new));
 }
 
-void D3DRenderPoolReset(d3d_render_pool_new *pPool, void *pMaterialFunc)
+void D3DRenderPoolReset(d3d_render_pool_new *pPool, MaterialFctn pMaterialFunc)
 {
 	pPool->curPacket = 0;
 	pPool->numLists = 0;
 	pPool->curPacketList = pPool->renderPacketList;
-	pPool->pMaterialFctn = (MaterialFctn) pMaterialFunc;
+	pPool->pMaterialFctn = pMaterialFunc;
 }
 
 d3d_render_packet_new *D3DRenderPacketNew(d3d_render_pool_new *pPool)

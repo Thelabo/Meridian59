@@ -19,7 +19,7 @@ extern int sector_depths[];
  */
 bool CompareId(void *id1, void *id2)
 {
-   return reinterpret_cast<std::intptr_t>(id1) == reinterpret_cast<std::intptr_t>(id2);
+   return reinterpret_cast<intptr_t>(id1) == reinterpret_cast<intptr_t>(id2);
 }
 /************************************************************************/
 /*
@@ -28,7 +28,7 @@ bool CompareId(void *id1, void *id2)
  */
 bool CompareIdObject(void *idnum, void *obj)
 {
-   return GetObjId(reinterpret_cast<std::intptr_t>(idnum)) == GetObjId(((object_node *) obj)->id);
+   return GetObjId(reinterpret_cast<intptr_t>(idnum)) == GetObjId(((object_node *) obj)->id);
 }
 /************************************************************************/
 /*
@@ -37,7 +37,7 @@ bool CompareIdObject(void *idnum, void *obj)
  */
 bool CompareIdRoomObject(void *idnum, void *obj)
 {
-   return GetObjId(reinterpret_cast<std::intptr_t>(idnum)) == GetObjId(((room_contents_node *) obj)->obj.id);
+   return GetObjId(reinterpret_cast<intptr_t>(idnum)) == GetObjId(((room_contents_node *) obj)->obj.id);
 }
 /************************************************************************/
 /*

@@ -24,6 +24,6 @@ int GetPointDepth(int x, int y);
 M59EXPORT list_type    GetObjects3D(int x, int y, int distance, int pos_flags, int neg_flags);
 M59EXPORT room_contents_node *GetObjectByPosition(int x, int y, int distance, int pos_flags, int neg_flags);
 int          GetVisibleObjects(ObjectRange **objs);
-ObjectRange *FindVisibleObjectById(ID obj_id);
+M59EXPORT ObjectRange *FindVisibleObjectById(ID obj_id);
 
 #endif /* #ifndef _CLIENT3D_H */

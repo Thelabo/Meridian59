@@ -25,8 +25,14 @@ typedef long fix;
 
 #define FloatToFix(x) ((fix) ((x) * (1L << FIX_DECIMAL)))
 
+#ifdef _MSC_VER
 __inline fix FixMul(int x, int y) {
   return (fix) (((__int64) x * (__int64) y) >> FIX_DECIMAL);
 }
+#else
+static inline fix FixMul(int x, int y) {
+  return (fix) (((long long) x * (long long) y) >> FIX_DECIMAL);
+}
+#endif
 
 #endif /* #ifndef _FIXEDPT_H */

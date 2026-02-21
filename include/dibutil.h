@@ -12,6 +12,10 @@
 #ifndef _DIBUTIL_H
 #define _DIBUTIL_H
 
+#ifndef M59EXPORT
+#define M59EXPORT
+#endif
+
 #define MAX_BITMAPNAME 32
 
 typedef struct {
@@ -57,9 +61,9 @@ typedef struct {
    External function declarations
  **************************************************************************/
 
-bool DibOpenFile(const char *szFile, Bitmaps *b);
+M59EXPORT bool DibOpenFile(const char *szFile, Bitmaps *b);
 void DibFree(PDIB pdib);
-void BitmapsFree(Bitmaps *b);
+M59EXPORT void BitmapsFree(Bitmaps *b);
 
 /****************************************************************************
    Bitmaps structure macros

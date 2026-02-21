@@ -1281,7 +1281,7 @@ void DisplayUsing(list_type using_list)
 
    /* Select used items */
    for (l = using_list; l != NULL; l = l->next)
-     DisplaySetUsing(reinterpret_cast<std::intptr_t>(l->data), true);
+     DisplaySetUsing(reinterpret_cast<intptr_t>(l->data), true);
 }
 /************************************************************************/
 /*
@@ -1339,7 +1339,7 @@ bool InventoryItemVisible(int row, int col)
 bool InventoryCompareIdItem(void *idnum, void *item)
 {
    InvItem *temp = (InvItem *) item;
-   return GetObjId(reinterpret_cast<std::intptr_t>(idnum)) == GetObjId(temp->obj->id);
+   return GetObjId(reinterpret_cast<intptr_t>(idnum)) == GetObjId(temp->obj->id);
 }
 /************************************************************************/
 /*

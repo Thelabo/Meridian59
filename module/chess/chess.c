@@ -13,7 +13,7 @@
 #include "chess.h"
 
 HINSTANCE hInst;              // Handle of this DLL
-static HWND hChessDlg;        // Modeless game window
+HWND hChessDlg;               // Modeless game window
 static HWND hPromoteDlg;      // Pawn promotion dialog
 
 static Board b;               // State of game
@@ -85,7 +85,7 @@ static bool AbortChessDialogs(void);
 static void ChessGotPlayerName(BYTE player_num, char *name);
 static void ChessSendMove(void);
 /****************************************************************************/
-BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
+extern "C" BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
 {
    switch (reason)
    {
@@ -99,7 +99,7 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
    return TRUE;
 }
 /****************************************************************************/
-void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
+extern "C" void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
 {
    info->event_mask = EVENT_SERVERMSG | EVENT_RESETDATA;
    info->priority   = PRIORITY_NORMAL;
@@ -113,7 +113,7 @@ void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
    exiting = false;
 }
 /****************************************************************************/
-void WINAPI ModuleExit(void)
+extern "C" void WINAPI ModuleExit(void)
 {
    bool has_dialog = false;
 
@@ -135,7 +135,7 @@ void WINAPI ModuleExit(void)
  * EVENT_SERVERMSG
  */
 /****************************************************************************/
-bool WINAPI EventServerMessage(char *message, long len)
+extern "C" bool WINAPI EventServerMessage(char *message, long len)
 {
    bool retval;
 
@@ -267,7 +267,7 @@ bool HandleGamePlayer(char *ptr, long len)
  * EVENT_RESETDATA
  */
 /****************************************************************************/
-bool WINAPI EventResetData(void)
+extern "C" bool WINAPI EventResetData(void)
 {
    ModuleExit();
    return true;

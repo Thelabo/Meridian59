@@ -40,9 +40,9 @@ void UserActivateMouse(void);
 void UserActivate(void);
 void UserTargetNextOrPrevious(bool bTargetNext);
 void SetUserTargetID( ID idTargetNew );
-ID   GetUserTargetID();
+M59EXPORT ID   GetUserTargetID();
 void UserMouselookToggle(void);
-bool UserMouselookIsEnabled(void);
+M59EXPORT bool UserMouselookIsEnabled(void);
 void UserTargetSelf(void);
 
 void GotObjectContents(ID object_id, list_type contents);

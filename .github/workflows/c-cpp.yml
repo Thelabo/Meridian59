@@ -80,3 +80,34 @@ jobs:
     - name: make server 64-bit
       run: |
         nmake /nologo Bserver
+
+
+  build-linux-cmake:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y cmake g++ mingw-w64 flex bison python3
+
+    - name: Configure
+      run: cmake -B build
+
+    - name: Build
+      run: cmake --build build -j$(nproc)
+
+    - name: Verify native binaries
+      run: |
+        file run/server/blakserv | grep -q "ELF"
+        file bin/bc | grep -q "ELF"
+
+    - name: Verify cross-compiled binaries
+      run: |
+        file run/localclient/meridian.exe | grep -q "PE32"
+        file run/localclient/resource/merintr.dll | grep -q "PE32"
+
+    - name: Verify kod compilation
+      run: |
+        test $(ls run/server/loadkod/*.bof | wc -l) -gt 1000

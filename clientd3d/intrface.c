@@ -299,10 +299,10 @@ void PerformAction(int action, const void *action_data)
    switch (action)
    {
    case A_TABFWD:
-      MainTab(reinterpret_cast<std::intptr_t>(action_data), true);
+      MainTab(reinterpret_cast<intptr_t>(action_data), true);
       break;
    case A_TABBACK:
-      MainTab(reinterpret_cast<std::intptr_t>(action_data), false);
+      MainTab(reinterpret_cast<intptr_t>(action_data), false);
       break;
    case A_ATTACK:
       if ((GetPlayerInfo()->viewID == 0) || (GetPlayerInfo()->viewID == GetPlayerInfo()->id))
@@ -416,7 +416,7 @@ void PerformAction(int action, const void *action_data)
 			while (ShowCursor(FALSE) >= 0)
 				ShowCursor(FALSE);
 	   }
-      UserSelect(reinterpret_cast<std::intptr_t>(action_data));
+      UserSelect(reinterpret_cast<intptr_t>(action_data));
       break;
 
    case A_BUY:
@@ -432,7 +432,7 @@ void PerformAction(int action, const void *action_data)
       break;
 
    case A_USERACTION:
-      RequestAction(reinterpret_cast<std::intptr_t>(action_data));
+      RequestAction(reinterpret_cast<intptr_t>(action_data));
       break;
 
    case A_MAP:

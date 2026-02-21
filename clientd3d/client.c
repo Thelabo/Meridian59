@@ -42,7 +42,9 @@ void _cdecl dprintf(const char *fmt, ...)
 	vsnprintf((char*)s, bufferSize, fmt, marker);
 	va_end(marker);
 
+#ifdef _MSC_VER
 	_RPT1(_CRT_WARN,"dprintf() says : %s",s);
+#endif
 
 	if (!config.debug)
 		return;

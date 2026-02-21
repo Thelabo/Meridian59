@@ -51,7 +51,7 @@ CAPTION "Enviar email"
 FONT 8, "MS Sans Serif"
 BEGIN
     LTEXT           "&Para:",IDC_STATIC,20,6,22,8
-    EDITTEXT        IDC_RECIPIENTS,,43,4,235,32,ES_MULTILINE | ES_AUTOVSCROLL
+    EDITTEXT        IDC_RECIPIENTS,43,4,235,32,ES_MULTILINE | ES_AUTOVSCROLL
     LTEXT           "&Assunto:",IDC_STATIC,9,48,28,8
     EDITTEXT        IDC_SUBJECT,43,45,235,14,ES_AUTOHSCROLL
     EDITTEXT        IDC_MAILEDIT,4,77,274,158,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
@@ -65,7 +65,7 @@ STYLE DS_SETFONT | WS_MAXIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSM
 CAPTION "Publicar artigo"
 FONT 8, "MS Sans Serif"
 BEGIN
-    LTEXT           "Artigo em um grupo de notícias",IDC_STATIC,10,11,86,8
+    LTEXT           "Artigo em um grupo de notï¿½cias",IDC_STATIC,10,11,86,8
     LTEXT           "(agrupar aqui)",IDC_GROUPNAME,99,11,105,8
     LTEXT           "Assunto:",IDC_STATIC,10,28,28,8
     EDITTEXT        IDC_SUBJECT,43,26,228,13,ES_AUTOHSCROLL
@@ -101,15 +101,15 @@ END
 
 STRINGTABLE 
 BEGIN
-    IDS_CHECKNAMES          "Verificando nome dos destinatários..."
+    IDS_CHECKNAMES          "Verificando nome dos destinatï¿½rios..."
     IDS_SUBJECT             "Assunto: "
     IDS_DATE                "Data: "
     IDS_FROM                "De: "
     IDS_TO                  "Para: "
     IDS_RE                  "Re: "
     IDS_GETTINGMSGS         "Procurando novas mensagens..."
-    IDS_NONEWMAIL           "Você não tem nenhum novo email."
-    IDS_MAILONEDIALOG       "Você só pode editar uma mensagem por vez."
+    IDS_NONEWMAIL           "Vocï¿½ nï¿½o tem nenhum novo email."
+    IDS_MAILONEDIALOG       "Vocï¿½ sï¿½ pode editar uma mensagem por vez."
     IDS_READMAIL            "Ler email"
     IDS_MHEADER1            "#"
     IDS_MHEADER2            "De"
@@ -120,13 +120,13 @@ END
 
 STRINGTABLE 
 BEGIN
-    IDS_NORECIPIENTS        "Você deve especificar pelo menos um destinatário."
-    IDS_CANTDELETEMAIL      "Não foi possível deletar a mensagem de email: %s."
-    IDS_CANTLOADMSG         "Não foi possível carregar a mensagem de email."
-    IDS_SAVEFAILED          "Não foi possível salvar a mensagem de email. Você pode estar sem espaço no dico. Você deseja tentar novamente?"
-    IDS_BADNAME             "Nome do destinatário é inválido: %s.\nPor favor, verifique se o nome foi digitado corretamente e tente novamente."
-    IDS_TOOMANYRECIPIENTS   "Esta mensagem tem uma quantidade muito grande de destinatários.\n\nVocê deseja enviá-la somente para o primeiro destinatário?"
-    IDS_CANTREPLY           "Você não pode responder esta mensagem."
+    IDS_NORECIPIENTS        "Vocï¿½ deve especificar pelo menos um destinatï¿½rio."
+    IDS_CANTDELETEMAIL      "Nï¿½o foi possï¿½vel deletar a mensagem de email: %s."
+    IDS_CANTLOADMSG         "Nï¿½o foi possï¿½vel carregar a mensagem de email."
+    IDS_SAVEFAILED          "Nï¿½o foi possï¿½vel salvar a mensagem de email. Vocï¿½ pode estar sem espaï¿½o no dico. Vocï¿½ deseja tentar novamente?"
+    IDS_BADNAME             "Nome do destinatï¿½rio ï¿½ invï¿½lido: %s.\nPor favor, verifique se o nome foi digitado corretamente e tente novamente."
+    IDS_TOOMANYRECIPIENTS   "Esta mensagem tem uma quantidade muito grande de destinatï¿½rios.\n\nVocï¿½ deseja enviï¿½-la somente para o primeiro destinatï¿½rio?"
+    IDS_CANTREPLY           "Vocï¿½ nï¿½o pode responder esta mensagem."
     IDS_DELETEMULTIPLE      "Tem certeza que deseja excluir %d mensagens?"
 END
 
@@ -153,7 +153,7 @@ END
 STRINGTABLE 
 BEGIN
     IDS_FRIDAY              "Sex"
-    IDS_SATURDAY            "Sáb"
+    IDS_SATURDAY            "Sï¿½b"
     IDS_SUNDAY              "Dom"
     IDS_NHEADER1            "Assunto"
     IDS_NHEADER2            "Autor"
@@ -191,8 +191,8 @@ BEGIN
     PUSHBUTTON      "&Antworten",IDC_REPLY,59,141,35,12,NOT WS_TABSTOP
     PUSHBUTTON      "Antwort an &Alle",IDC_REPLYALL,97,141,55,12,NOT WS_TABSTOP
     PUSHBUTTON      "A&ktualisieren",IDC_RESCAN,156,141,45,12,NOT WS_TABSTOP
-    PUSHBUTTON      "Löschen",IDC_DELETEMSG,204,141,35,12,NOT WS_TABSTOP
-    PUSHBUTTON      "Schließen",IDCANCEL,243,141,35,12,NOT WS_TABSTOP
+    PUSHBUTTON      "Lï¿½schen",IDC_DELETEMSG,204,141,35,12,NOT WS_TABSTOP
+    PUSHBUTTON      "Schlieï¿½en",IDCANCEL,243,141,35,12,NOT WS_TABSTOP
     LTEXT           "",IDC_MAILINFO,4,157,274,9
     EDITTEXT        IDC_MAILEDIT,4,171,275,163,ES_MULTILINE | ES_READONLY | WS_VSCROLL
 END
@@ -214,7 +214,7 @@ END
 
 IDD_NEWSPOST DIALOG  0, 0, 282, 255
 STYLE DS_SETFONT | WS_MAXIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
-CAPTION "Artikel veröffentlichen"
+CAPTION "Artikel verï¿½ffentlichen"
 FONT 8, "MS Sans Serif"
 BEGIN
     LTEXT           "Artikel in einer Newsgroup",IDC_STATIC,10,11,86,8
@@ -237,7 +237,7 @@ BEGIN
     PUSHBUTTON      "A&utor antworten",IDC_REPLYMAIL,51,143,58,12,WS_DISABLED
     PUSHBUTTON      "&Nachricht verfassen",IDC_NEWSPOST,113,143,68,12
     PUSHBUTTON      "A&ktualisieren",IDC_RESCAN,185,143,46,12
-    PUSHBUTTON      "Schließen",IDOK,236,143,41,12
+    PUSHBUTTON      "Schlieï¿½en",IDOK,236,143,41,12
     EDITTEXT        IDC_NEWSEDIT,4,161,297,157,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL
 END
 
@@ -249,7 +249,7 @@ END
 
 STRINGTABLE 
 BEGIN
-    IDS_CHECKNAMES          "Die Empfänger werden überprüft ..."
+    IDS_CHECKNAMES          "Die Empfï¿½nger werden ï¿½berprï¿½ft ..."
     IDS_SUBJECT             "Betreff: "
     IDS_DATE                "Datum: "
     IDS_FROM                "Von: "
@@ -268,21 +268,21 @@ END
 
 STRINGTABLE 
 BEGIN
-    IDS_NORECIPIENTS        "Du mußt zumindest einen Empfänger festlegen."
-    IDS_CANTDELETEMAIL      "Die Nachricht %s kann nicht gelöscht werden."
-    IDS_CANTLOADMSG         "Die Nachrichten können nicht empfangen werden."
-    IDS_SAVEFAILED          "Die Nachricht kann nicht gespeichert werden. Vielleicht ist nicht mehr genügend Festplattenspeicher frei?"
-    IDS_BADNAME             "Der Empfängername %s ist ungültig.\nÜberprüfe die Schreibweise und versuche es noch einmal."
-    IDS_TOOMANYRECIPIENTS   "Diese Nachricht kann nicht an soviele Empfänger versandt werden.\nWillst Du Sie and die ersten %d Empfänger versenden?"
+    IDS_NORECIPIENTS        "Du muï¿½t zumindest einen Empfï¿½nger festlegen."
+    IDS_CANTDELETEMAIL      "Die Nachricht %s kann nicht gelï¿½scht werden."
+    IDS_CANTLOADMSG         "Die Nachrichten kï¿½nnen nicht empfangen werden."
+    IDS_SAVEFAILED          "Die Nachricht kann nicht gespeichert werden. Vielleicht ist nicht mehr genï¿½gend Festplattenspeicher frei?"
+    IDS_BADNAME             "Der Empfï¿½ngername %s ist ungï¿½ltig.\nï¿½berprï¿½fe die Schreibweise und versuche es noch einmal."
+    IDS_TOOMANYRECIPIENTS   "Diese Nachricht kann nicht an soviele Empfï¿½nger versandt werden.\nWillst Du Sie and die ersten %d Empfï¿½nger versenden?"
     IDS_CANTREPLY           "Du kannst auf diese Nachricht nicht antworten."
-    IDS_DELETEMULTIPLE      "Sind Sie sicher, dass Sie %d Nachrichten löschen möchten?"
+    IDS_DELETEMULTIPLE      "Sind Sie sicher, dass Sie %d Nachrichten lï¿½schen mï¿½chten?"
 END
 
 STRINGTABLE 
 BEGIN
     IDS_JANUARY             "Jan"
     IDS_FEBRUARY            "Feb"
-    IDS_MARCH               "Mär"
+    IDS_MARCH               "Mï¿½r"
     IDS_APRIL               "Apr"
     IDS_MAY                 "Mai"
     IDS_JUNE                "Jun"
@@ -428,16 +428,16 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_LETTER              ICON                    "bitmap\\letter.ico"
+IDI_LETTER              ICON                    "bitmap/letter.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Bitmap
 //
 
-IDB_MAILBOX             BITMAP                  "bitmap\\mailbox.bmp"
-IDB_UPARROW             BITMAP                  "bitmap\\up_arrow.bmp"
-IDB_DOWNARROW           BITMAP                  "bitmap\\down_arrow.bmp"
+IDB_MAILBOX             BITMAP                  "bitmap/mailbox.bmp"
+IDB_UPARROW             BITMAP                  "bitmap/up_arrow.bmp"
+IDB_DOWNARROW           BITMAP                  "bitmap/down_arrow.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //

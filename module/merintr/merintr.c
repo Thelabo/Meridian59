@@ -580,7 +580,7 @@ extern int GetActiveStatGroup(void);
 static spell       *ExtractNewSpell(char **ptr);
 static bool         ExtractStatistic(char **ptr, Statistic *s);
 /****************************************************************************/
-BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
+extern "C" BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
 {
    switch (reason)
    {
@@ -594,7 +594,7 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
    return TRUE;
 }
 /****************************************************************************/
-void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
+extern "C" void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
 {
    info->event_mask = EVENT_SERVERMSG | EVENT_USERACTION | EVENT_FONTCHANGED |
       EVENT_STATECHANGED | EVENT_MENUITEM | EVENT_TEXTCOMMAND | EVENT_RESIZE |
@@ -616,7 +616,7 @@ void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
    InterfaceInit();
 }
 /****************************************************************************/
-void WINAPI ModuleExit(void)
+extern "C" void WINAPI ModuleExit(void)
 {
    KeyRemoveTable(GAME_PLAY, interface_key_table);
    KeyRemoveTable(GAME_SELECT, select_key_table);
@@ -633,7 +633,7 @@ void WINAPI ModuleExit(void)
  * EVENT_SERVERMSG
  */
 /****************************************************************************/
-bool WINAPI EventServerMessage(char *message, long len)
+extern "C" bool WINAPI EventServerMessage(char *message, long len)
 {
    bool retval;
 
@@ -1515,7 +1515,7 @@ bool HandleSpellSchools(char *ptr, long len)
  * EVENT_MOUSECLICK
  */
 /****************************************************************************/
-bool WINAPI EventMouseClick(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFlags)
+extern "C" bool WINAPI EventMouseClick(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFlags)
 {
    if (fDoubleClick)
       PerformAction(A_ACTIVATEMOUSE, NULL);
@@ -1535,7 +1535,7 @@ bool WINAPI EventMouseClick(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT key
  * EVENT_USERACTION
  */
 /****************************************************************************/
-bool WINAPI EventUserAction(int action, void *action_data)
+extern "C" bool WINAPI EventUserAction(int action, void *action_data)
 {
    return InterfaceAction(action, action_data);
 }
@@ -1544,7 +1544,7 @@ bool WINAPI EventUserAction(int action, void *action_data)
  * EVENT_FONTCHANGED
  */
 /****************************************************************************/
-bool WINAPI EventFontChanged(WORD font_id, LOGFONT *font)
+extern "C" bool WINAPI EventFontChanged(WORD font_id, LOGFONT *font)
 {
    InterfaceFontChanged(font_id, font);
    return true;
@@ -1554,7 +1554,7 @@ bool WINAPI EventFontChanged(WORD font_id, LOGFONT *font)
  * EVENT_COLORCHANGED
  */
 /****************************************************************************/
-bool WINAPI EventColorChanged(WORD color_id, COLORREF color)
+extern "C" bool WINAPI EventColorChanged(WORD color_id, COLORREF color)
 {
    InterfaceColorChanged(color_id, color);
    return true;
@@ -1564,7 +1564,7 @@ bool WINAPI EventColorChanged(WORD color_id, COLORREF color)
  * EVENT_STATECHANGED
  */
 /****************************************************************************/
-bool WINAPI EventStateChanged(int old_state, int new_state)
+extern "C" bool WINAPI EventStateChanged(int old_state, int new_state)
 {
    if (new_state == GAME_INVALID)
    {
@@ -1576,7 +1576,7 @@ bool WINAPI EventStateChanged(int old_state, int new_state)
  * EVENT_MENUITEM
  */
 /****************************************************************************/
-bool WINAPI EventMenuItem(int id)
+extern "C" bool WINAPI EventMenuItem(int id)
 {
    // Check for spell menu items
    if (id >= ID_SPELL && id < ID_SPELL + MAX_SPELLS)
@@ -1599,7 +1599,7 @@ bool WINAPI EventMenuItem(int id)
  * EVENT_TEXTCOMMAND
  */
 /****************************************************************************/
-bool WINAPI EventTextCommand(char *str)
+extern "C" bool WINAPI EventTextCommand(char *str)
 {
    static BOOL bRecursing = FALSE;
    BOOL bReturn = TRUE;
@@ -1629,7 +1629,7 @@ bool WINAPI EventTextCommand(char *str)
  * EVENT_RESIZE
  */
 /****************************************************************************/
-bool WINAPI EventResize(int xsize, int ysize, AREA *view)
+extern "C" bool WINAPI EventResize(int xsize, int ysize, AREA *view)
 {
    InterfaceResizeModule(xsize, ysize, view);
    return true;
@@ -1639,7 +1639,7 @@ bool WINAPI EventResize(int xsize, int ysize, AREA *view)
  * EVENT_USERCHANGED
  */
 /****************************************************************************/
-bool WINAPI EventUserChanged(void)
+extern "C" bool WINAPI EventUserChanged(void)
 {
    InterfaceUserChanged();
    return true;
@@ -1649,7 +1649,7 @@ bool WINAPI EventUserChanged(void)
  * EVENT_REDRAW
  */
 /****************************************************************************/
-bool WINAPI EventRedraw(HDC hdc)
+extern "C" bool WINAPI EventRedraw(HDC hdc)
 {
    InterfaceRedrawModule(hdc);
    return true;
@@ -1659,7 +1659,7 @@ bool WINAPI EventRedraw(HDC hdc)
  * EVENT_DRAWITEM
  */
 /****************************************************************************/
-bool WINAPI EventDrawItem(HWND hwnd, const DRAWITEMSTRUCT *lpdis)
+extern "C" bool WINAPI EventDrawItem(HWND hwnd, const DRAWITEMSTRUCT *lpdis)
 {
    return InterfaceDrawItem(hwnd, lpdis);
 }
@@ -1668,7 +1668,7 @@ bool WINAPI EventDrawItem(HWND hwnd, const DRAWITEMSTRUCT *lpdis)
  * EVENT_RESETDATA
  */
 /****************************************************************************/
-bool WINAPI EventResetData(void)
+extern "C" bool WINAPI EventResetData(void)
 {
    InterfaceResetData();
    return true;
@@ -1678,7 +1678,7 @@ bool WINAPI EventResetData(void)
  * EVENT_INVENTORY
  */
 /****************************************************************************/
-bool WINAPI EventInventory(int command, void *data)
+extern "C" bool WINAPI EventInventory(int command, void *data)
 {
    switch (command)
    {
@@ -1700,15 +1700,15 @@ bool WINAPI EventInventory(int command, void *data)
       break;
 
    case INVENTORY_REMOVE:
-      InventoryRemoveItem(reinterpret_cast<std::intptr_t>(data));
+      InventoryRemoveItem(reinterpret_cast<intptr_t>(data));
       break;
 
    case INVENTORY_USE:
-      DisplaySetUsing(reinterpret_cast<std::intptr_t>(data), true);
+      DisplaySetUsing(reinterpret_cast<intptr_t>(data), true);
       break;
 
    case INVENTORY_UNUSE:
-      DisplaySetUsing(reinterpret_cast<std::intptr_t>(data), false);
+      DisplaySetUsing(reinterpret_cast<intptr_t>(data), false);
       break;
 
    case INVENTORY_CHANGE:
@@ -1726,7 +1726,7 @@ bool WINAPI EventInventory(int command, void *data)
  * EVENT_ANIMATE
  */
 /****************************************************************************/
-bool WINAPI EventAnimate(int dt)
+extern "C" bool WINAPI EventAnimate(int dt)
 {
    room_contents_node *r;
 
@@ -1745,7 +1745,7 @@ bool WINAPI EventAnimate(int dt)
  * EVENT_SETCURSOR
  */
 /****************************************************************************/
-bool WINAPI EventSetCursor(HCURSOR cursor)
+extern "C" bool WINAPI EventSetCursor(HCURSOR cursor)
 {
    if (GameGetState() == GAME_PLAY && InventoryMouseCaptured())
    {
@@ -1759,7 +1759,7 @@ bool WINAPI EventSetCursor(HCURSOR cursor)
  * EVENT_NEWROOM
  */
 /****************************************************************************/
-bool WINAPI EventNewRoom(void)
+extern "C" bool WINAPI EventNewRoom(void)
 {
    InterfaceNewRoom();
    return true;
@@ -1769,7 +1769,7 @@ bool WINAPI EventNewRoom(void)
  * EVENT_CONFIGCHANGED
  */
 /****************************************************************************/
-bool WINAPI EventConfigChanged(void)
+extern "C" bool WINAPI EventConfigChanged(void)
 {
    InterfaceConfigChanged();
    return true;

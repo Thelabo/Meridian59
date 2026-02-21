@@ -12,7 +12,9 @@
 #ifndef _CLIENT_H
 #define _CLIENT_H
 
+#ifdef _MSC_VER
 #pragma warning(disable: 4244) // cast double to float loses information
+#endif
 
 #ifndef _INC_WINDOWS
 #define NOMINMAX
@@ -31,7 +33,7 @@
 #include <fcntl.h>
 #include <io.h>
 #include <direct.h>
-#include <sys\stat.h>
+#include <sys/stat.h>
 #include <dlgs.h>
 #include <mmsystem.h>
 #include <winsock.h>
@@ -94,9 +96,13 @@ extern bool is_foreground;   // True when program is in the foreground
 
 M59EXPORT void _cdecl dprintf(const char *fmt,...);
 
+#ifdef _MSC_VER
 #define _CRTDBG_MAP_ALLOC
+#endif
 #include <stdlib.h>
+#ifdef _MSC_VER
 #include <crtdbg.h>
+#endif
 #include <string>
 #include <vector>
 #include <algorithm>

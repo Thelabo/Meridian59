@@ -57,7 +57,7 @@ static keymap dm_key_table[] = {
 };
 
 /****************************************************************************/
-BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
+extern "C" BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
 {
    switch (reason)
    {
@@ -71,7 +71,7 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
    return TRUE;
 }
 /****************************************************************************/
-void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
+extern "C" void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
 {
    info->event_mask = EVENT_TEXTCOMMAND | EVENT_USERACTION | EVENT_SERVERMSG;
    info->priority   = PRIORITY_NORMAL;
@@ -82,7 +82,7 @@ void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
    KeyAddTable(GAME_PLAY, dm_key_table);
 }
 /****************************************************************************/
-void WINAPI ModuleExit(void)
+extern "C" void WINAPI ModuleExit(void)
 {
    exiting = true;
    PostMessage(cinfo->hMain, BK_MODULEUNLOAD, 0, MODULE_ID);
@@ -92,7 +92,7 @@ void WINAPI ModuleExit(void)
  * EVENT_SERVERMSG
  */
 /****************************************************************************/
-bool WINAPI EventServerMessage(char *message, long len)
+extern "C" bool WINAPI EventServerMessage(char *message, long len)
 {
    bool retval;
 
@@ -124,7 +124,7 @@ bool HandleAdmin(char *ptr, long len)
  * EVENT_TEXTCOMMAND
  */
 /****************************************************************************/
-bool WINAPI EventTextCommand(char *str)
+extern "C" bool WINAPI EventTextCommand(char *str)
 {
    // Parse command, and don't pass it on if we handle it
    if (ParseCommand(str, commands))
@@ -137,7 +137,7 @@ bool WINAPI EventTextCommand(char *str)
  * EVENT_USERACTION
  */
 /****************************************************************************/
-bool WINAPI EventUserAction(int action, void *action_data)
+extern "C" bool WINAPI EventUserAction(int action, void *action_data)
 {
    int x, y;
    list_type objects;
@@ -201,7 +201,7 @@ bool WINAPI EventUserAction(int action, void *action_data)
       if (!GetQEditorDlg() /* && !GetGChannelDlg() */)
 	 return true;
 
-      id = reinterpret_cast<std::intptr_t>(action_data);
+      id = reinterpret_cast<intptr_t>(action_data);
       if (id == INVALID_ID)
 	 return true;
 

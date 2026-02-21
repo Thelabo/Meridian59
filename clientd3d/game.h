@@ -117,4 +117,4 @@ M59EXPORT int GetActiveStatGroup(void);
 
 const room_type& getCurrentRoom();
 
-#endif _GAME_H
+#endif /* _GAME_H */

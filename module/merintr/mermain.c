@@ -356,7 +356,7 @@ bool InterfaceAction(int action, void *action_data)
       break;
 
    case A_ENDDRAG:   // action_data is ID of object being dragged
-      object_id = reinterpret_cast<std::intptr_t>(action_data);
+      object_id = reinterpret_cast<intptr_t>(action_data);
       // See if user dragged object to inventory
       InventoryGetArea(&a);
       
@@ -378,9 +378,9 @@ bool InterfaceAction(int action, void *action_data)
       break;
 
    case A_TABFWD:
-      return InterfaceTab(reinterpret_cast<std::intptr_t>(action_data), true);
+      return InterfaceTab(reinterpret_cast<intptr_t>(action_data), true);
    case A_TABBACK:
-      return InterfaceTab(reinterpret_cast<std::intptr_t>(action_data), false);
+      return InterfaceTab(reinterpret_cast<intptr_t>(action_data), false);
    }
 
    return true;

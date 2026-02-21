@@ -22,7 +22,7 @@ static bool DibReadBits(file_node *f, PDIB pdib, int version);
  * DibOpenFile: Load the bitmaps in the file given by filename into the
  *   given bitmap structure.  Return TRUE on success.
  */
-bool DibOpenFile(const char *szFile, Bitmaps *b)
+M59EXPORT bool DibOpenFile(const char *szFile, Bitmaps *b)
 {
    return DibOpenFileReal(szFile, b);
 }
@@ -257,7 +257,7 @@ void DibFree(PDIB pdib)
 /*
  * Free memory associated with bitmap structure.
  */
-void BitmapsFree(Bitmaps *b)
+M59EXPORT void BitmapsFree(Bitmaps *b)
 {
    int i;
    

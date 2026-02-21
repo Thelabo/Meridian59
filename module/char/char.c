@@ -45,7 +45,7 @@ client_message msg_table[] = {
 };
 
 /****************************************************************************/
-BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
+extern "C" BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
 {
    switch (reason)
    {
@@ -60,7 +60,7 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
    return TRUE;
 }
 /****************************************************************************/
-void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
+extern "C" void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
 {
    info->event_mask = EVENT_SERVERMSG | EVENT_STATECHANGED;
    info->priority   = PRIORITY_NORMAL;
@@ -78,7 +78,7 @@ void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
  * EVENT_SERVERMSG
  */
 /****************************************************************************/
-bool WINAPI EventServerMessage(char *message, long len)
+extern "C" bool WINAPI EventServerMessage(char *message, long len)
 {
    bool retval;
 
@@ -272,7 +272,7 @@ bool HandleCharInfoNotOk(char *ptr, long len)
  * EVENT_STATECHANGED
  */
 /****************************************************************************/
-bool WINAPI EventStateChanged(int old_state, int new_state)
+extern "C" bool WINAPI EventStateChanged(int old_state, int new_state)
 {
    if (old_state == GAME_PICKCHAR && new_state != GAME_PICKCHAR)
    {

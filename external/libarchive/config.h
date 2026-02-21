@@ -366,7 +366,9 @@ typedef uint64_t uintmax_t;
 /* #undef HAVE_ATTR_XATTR_H */
 
 /* Define to 1 if you have the <Bcrypt.h> header file. */
+#ifndef __MINGW32__
 #define HAVE_BCRYPT_H 1
+#endif
 
 /* Define to 1 if you have the <bsdxml.h> header file. */
 /* #undef HAVE_BSDXML_H */
@@ -457,7 +459,11 @@ typedef uint64_t uintmax_t;
 
 /* Define to 1 if you have the declaration of `SSIZE_MAX', and to 0 if you
    don't. */
+#ifdef __MINGW32__
+#define HAVE_DECL_SSIZE_MAX 1
+#else
 /* #undef HAVE_DECL_SSIZE_MAX */
+#endif
 
 /* Define to 1 if you have the declaration of `strerror_r', and to 0 if you
    don't. */
@@ -1282,29 +1288,54 @@ typedef uint64_t uintmax_t;
 /* Define to empty if `const' does not conform to ANSI C. */
 /* #undef const */
 
+/* MinGW-w64 provides mode_t, pid_t, ssize_t via <sys/types.h>.
+   MSVC lacks them entirely, so define as macros.
+   uid_t, gid_t, id_t are not provided by either — always define. */
+#ifdef __MINGW32__
+#include <sys/types.h>
+#endif
+
 /* Define to `int' if <sys/types.h> doesn't define. */
+#ifndef __MINGW32__
 #define gid_t short
+#else
+typedef short gid_t;
+#endif
 
 /* Define to `unsigned long' if <sys/types.h> does not define. */
+#ifndef __MINGW32__
 #define id_t short
+#else
+typedef short id_t;
+#endif
 
 /* Define to `int' if <sys/types.h> does not define. */
+#ifndef __MINGW32__
 #define mode_t unsigned short
+#endif
 
 /* Define to `long long' if <sys/types.h> does not define. */
 /* #undef off_t */
 
 /* Define to `int' if <sys/types.h> doesn't define. */
+#ifndef __MINGW32__
 #define pid_t int
+#endif
 
 /* Define to `unsigned int' if <sys/types.h> does not define. */
 /* #undef size_t */
 
 /* Define to `int' if <sys/types.h> does not define. */
+#ifndef __MINGW32__
 #define ssize_t SSIZE_T
+#endif
 
 /* Define to `int' if <sys/types.h> doesn't define. */
+#ifndef __MINGW32__
 #define uid_t short
+#else
+typedef short uid_t;
+#endif
 
 /* Define to `int' if <sys/types.h> does not define. */
 /* #undef intptr_t */

@@ -68,7 +68,7 @@ static TypedCommand commands[] = {
 };
 
 /****************************************************************************/
-BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
+extern "C" BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
 {
    switch (reason)
    {
@@ -92,7 +92,7 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
    return TRUE;
 }
 /****************************************************************************/
-void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
+extern "C" void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
 {
    int i;
 
@@ -114,7 +114,7 @@ void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
    }
 }
 /****************************************************************************/
-void WINAPI ModuleExit(void)
+extern "C" void WINAPI ModuleExit(void)
 {
    bool has_dialog = false, retval;
 
@@ -156,7 +156,7 @@ void RegisterWindowClasses(void)
  * EVENT_SERVERMSG
  */
 /****************************************************************************/
-bool WINAPI EventServerMessage(char *message, long len)
+extern "C" bool WINAPI EventServerMessage(char *message, long len)
 {
    bool retval;
 
@@ -354,7 +354,7 @@ bool HandleLookupNames(char *ptr, long len)
  * EVENT_USERACTION
  */
 /****************************************************************************/
-bool WINAPI EventUserAction(int action, void *user_action)
+extern "C" bool WINAPI EventUserAction(int action, void *user_action)
 {
    if (action != A_MAILREAD)
       return true;
@@ -374,7 +374,7 @@ void CommandMail(char *args)
  * EVENT_FONTCHANGED
  */
 /****************************************************************************/
-bool WINAPI EventFontChanged(WORD font_id, LOGFONT *font)
+extern "C" bool WINAPI EventFontChanged(WORD font_id, LOGFONT *font)
 {
    MailChangeFonts();
    return true;
@@ -384,7 +384,7 @@ bool WINAPI EventFontChanged(WORD font_id, LOGFONT *font)
  * EVENT_COLORCHANGED
  */
 /****************************************************************************/
-bool WINAPI EventColorChanged(WORD color_id, COLORREF color)
+extern "C" bool WINAPI EventColorChanged(WORD color_id, COLORREF color)
 {
    MailChangeColor();
    return true;
@@ -394,7 +394,7 @@ bool WINAPI EventColorChanged(WORD color_id, COLORREF color)
  * EVENT_TEXTCOMMAND
  */
 /****************************************************************************/
-bool WINAPI EventTextCommand(char *str)
+extern "C" bool WINAPI EventTextCommand(char *str)
 {
    // Parse command, and don't pass it on if we handle it
    if (ParseCommand(str, commands))

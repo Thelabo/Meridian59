@@ -44,7 +44,7 @@ static keymap admin_key_table[] = {
 };
 
 /****************************************************************************/
-BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
+extern "C" BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
 {
    switch (reason)
    {
@@ -58,7 +58,7 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD reason, LPVOID reserved)
    return TRUE;
 }
 /****************************************************************************/
-void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
+extern "C" void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
 {
    info->event_mask = EVENT_SERVERMSG | EVENT_USERACTION | EVENT_FONTCHANGED | EVENT_RESETDATA;
    info->priority   = PRIORITY_NORMAL;
@@ -69,7 +69,7 @@ void WINAPI GetModuleInfo(ModuleInfo *info, ClientInfo *client_info)
    KeyAddTable(GAME_PLAY, admin_key_table);
 }
 /****************************************************************************/
-void WINAPI ModuleExit(void)
+extern "C" void WINAPI ModuleExit(void)
 {
    exiting = true;
 
@@ -86,7 +86,7 @@ void WINAPI ModuleExit(void)
  * EVENT_SERVERMSG
  */
 /****************************************************************************/
-bool WINAPI EventServerMessage(char *message, long len)
+extern "C" bool WINAPI EventServerMessage(char *message, long len)
 {
    bool retval;
 
@@ -119,7 +119,7 @@ bool HandleAdmin(char *ptr, long len)
  * EVENT_USERACTION
  */
 /****************************************************************************/
-bool WINAPI EventUserAction(int action, void *action_data)
+extern "C" bool WINAPI EventUserAction(int action, void *action_data)
 {
    int x, y;
    list_type objects;
@@ -159,7 +159,7 @@ bool WINAPI EventUserAction(int action, void *action_data)
 
    case A_LOOKINVENTORY:
       // Examining inventory object
-      id = reinterpret_cast<std::intptr_t>(action_data);
+      id = reinterpret_cast<intptr_t>(action_data);
       if (hAdminDlg == NULL || hidden || id == INVALID_ID)
 	 return true;
 
@@ -178,7 +178,7 @@ bool WINAPI EventUserAction(int action, void *action_data)
  * EVENT_FONTCHANGED
  */
 /****************************************************************************/
-bool WINAPI EventFontChanged(WORD font_id, LOGFONT *font)
+extern "C" bool WINAPI EventFontChanged(WORD font_id, LOGFONT *font)
 {
    if (hAdminDlg != NULL)
       SendMessage(hAdminDlg, BK_SETDLGFONTS, 0, 0);
@@ -189,7 +189,7 @@ bool WINAPI EventFontChanged(WORD font_id, LOGFONT *font)
  * EVENT_RESETDATA
  */
 /****************************************************************************/
-bool WINAPI EventResetData(void)
+extern "C" bool WINAPI EventResetData(void)
 {
    // Clear all object info from dialog, since these might have changed
    if (hAdminDlg != NULL)

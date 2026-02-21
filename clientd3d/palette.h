@@ -20,7 +20,7 @@ void        ClearSystemPalette(void);
 HPALETTE    InitializePalette(void);
 void        SetDIBPalette(HDC gdc);
 COLORREF    GetNearestPaletteColor(COLORREF c);
-int         GetClosestPaletteIndex(COLORREF c);
+M59EXPORT int         GetClosestPaletteIndex(COLORREF c);
 void        PaletteActivate(bool is_foreground);
 void        PaletteDeactivate(void);
 void		SetBMIColors( BITMAPINFO* pbmInfo );

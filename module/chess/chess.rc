@@ -47,7 +47,7 @@ END
 
 IDD_PROMOTION DIALOG  0, 0, 75, 108
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Promoção do peão"
+CAPTION "Promoï¿½ï¿½o do peï¿½o"
 FONT 8, "MS Sans Serif"
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,12,86,50,14
@@ -72,7 +72,7 @@ BEGIN
     IDS_WHITEMOVE           "Turno das brancas:"
     IDS_BLACKMOVE           "Turno das vermelhas:"
     IDS_STALEMATE           "Afogamento!"
-    IDS_ASKRESIGN           "Você tem certeza que deseja desistir?"
+    IDS_ASKRESIGN           "Vocï¿½ tem certeza que deseja desistir?"
     IDS_WHITERESIGN         "Branco desistiu."
     IDS_BLACKRESIGN         "Vermelho desistiu."
 END
@@ -109,7 +109,7 @@ BEGIN
     PUSHBUTTON      "Aufgeben",IDC_RESIGN,266,160,54,14,WS_DISABLED
     PUSHBUTTON      "Neustarten",IDC_RESTART_GAME,266,179,54,14,WS_DISABLED
     PUSHBUTTON      "Spieler resetten",IDC_RESETPLAYERS,266,198,54,14,WS_DISABLED
-    PUSHBUTTON      "Schließen",IDCANCEL,266,217,54,14
+    PUSHBUTTON      "Schlieï¿½en",IDCANCEL,266,217,54,14
 END
 
 IDD_PROMOTION DIALOG  0, 0, 75, 108
@@ -121,7 +121,7 @@ BEGIN
     CONTROL         "Dame",IDC_QUEEN,"Button",BS_AUTORADIOBUTTON,15,13,37,10
     CONTROL         "Springer",IDC_KNIGHT,"Button",BS_AUTORADIOBUTTON,15,30,43,10
     CONTROL         "Turm",IDC_ROOK,"Button",BS_AUTORADIOBUTTON,15,47,33,10
-    CONTROL         "Läufer",IDC_BISHOP,"Button",BS_AUTORADIOBUTTON,15,64,36,8
+    CONTROL         "Lï¿½ufer",IDC_BISHOP,"Button",BS_AUTORADIOBUTTON,15,64,36,8
 END
 
 
@@ -250,18 +250,18 @@ END
 // Bitmap
 //
 
-IDB_WPAWN               BITMAP                  "bitmap\\wpawn.bmp"
-IDB_WROOK               BITMAP                  "bitmap\\wrook.bmp"
-IDB_WBISHOP             BITMAP                  "bitmap\\wbishop.bmp"
-IDB_WKNIGHT             BITMAP                  "bitmap\\wknight.bmp"
-IDB_WQUEEN              BITMAP                  "bitmap\\wqueen.bmp"
-IDB_WKING               BITMAP                  "bitmap\\wking.bmp"
-IDB_RPAWN               BITMAP                  "bitmap\\rpawn.bmp"
-IDB_RROOK               BITMAP                  "bitmap\\rrook.bmp"
-IDB_RBISHOP             BITMAP                  "bitmap\\rbishop.bmp"
-IDB_RKNIGHT             BITMAP                  "bitmap\\rknight.bmp"
-IDB_RQUEEN              BITMAP                  "bitmap\\rqueen.bmp"
-IDB_RKING               BITMAP                  "bitmap\\rking.bmp"
+IDB_WPAWN               BITMAP                  "bitmap/wpawn.bmp"
+IDB_WROOK               BITMAP                  "bitmap/wrook.bmp"
+IDB_WBISHOP             BITMAP                  "bitmap/wbishop.bmp"
+IDB_WKNIGHT             BITMAP                  "bitmap/wknight.bmp"
+IDB_WQUEEN              BITMAP                  "bitmap/wqueen.bmp"
+IDB_WKING               BITMAP                  "bitmap/wking.bmp"
+IDB_RPAWN               BITMAP                  "bitmap/rpawn.bmp"
+IDB_RROOK               BITMAP                  "bitmap/rrook.bmp"
+IDB_RBISHOP             BITMAP                  "bitmap/rbishop.bmp"
+IDB_RKNIGHT             BITMAP                  "bitmap/rknight.bmp"
+IDB_RQUEEN              BITMAP                  "bitmap/rqueen.bmp"
+IDB_RKING               BITMAP                  "bitmap/rking.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //

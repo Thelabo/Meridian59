@@ -109,7 +109,7 @@ if(CROSS_COMPILE_CLIENT)
     include(ExternalProject)
 
     # Check that the MinGW toolchain is available
-    find_program(MINGW_CXX x86_64-w64-mingw32-g++)
+    find_program(MINGW_CXX i686-w64-mingw32-g++)
     if(NOT MINGW_CXX)
         message(WARNING
             "MinGW-w64 cross-compiler not found (x86_64-w64-mingw32-g++).\n"
@@ -132,7 +132,7 @@ if(CROSS_COMPILE_CLIENT)
             BINARY_DIR "${CMAKE_BINARY_DIR}/client-win32-build"
 
             CMAKE_ARGS
-                -DCMAKE_TOOLCHAIN_FILE=${CMAKE_SOURCE_DIR}/cmake/mingw-w64-x86_64.cmake
+                -DCMAKE_TOOLCHAIN_FILE=${CMAKE_SOURCE_DIR}/cmake/mingw-w64-i686.cmake
                 -DCMAKE_BUILD_TYPE=${_client_build_type}
                 -DGENERATED_DIR=${GENERATED_DIR}
 

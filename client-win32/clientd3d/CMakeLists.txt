@@ -206,16 +206,17 @@ target_link_libraries(meridian PRIVATE
     wininet ole32 d3d9
 )
 
-# OpenAL - use the pre-built Win64 import library
+# OpenAL - use the pre-built Win32 import library
 target_link_libraries(meridian PRIVATE
-    ${OPENAL_DIR}/libs/Win64/OpenAL32.lib
+    ${OPENAL_DIR}/libs/Win32/OpenAL32.lib
+    -static-libgcc -static-libstdc++
 )
 
 # ---- Install ----
 install(TARGETS meridian DESTINATION "${CLIENT_RUN_DIR}")
 
 # Also copy the OpenAL DLL alongside the client
-install(FILES "${OPENAL_DIR}/bin/Win64/soft_oal.dll"
+install(FILES "${OPENAL_DIR}/bin/Win32/soft_oal.dll"
         DESTINATION "${CLIENT_RUN_DIR}"
         RENAME OpenAL32.dll)
 
@@ -225,7 +226,7 @@ install(FILES "${OPENAL_DIR}/bin/Win64/soft_oal.dll"
 add_custom_command(TARGET meridian POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory "${CLIENT_RUN_DIR}"
     COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:meridian>" "${CLIENT_RUN_DIR}/"
-    COMMAND ${CMAKE_COMMAND} -E copy "${OPENAL_DIR}/bin/Win64/soft_oal.dll" "${CLIENT_RUN_DIR}/OpenAL32.dll"
+    COMMAND ${CMAKE_COMMAND} -E copy "${OPENAL_DIR}/bin/Win32/soft_oal.dll" "${CLIENT_RUN_DIR}/OpenAL32.dll"
     COMMENT "Copying meridian.exe and OpenAL32.dll to ${CLIENT_RUN_DIR}/"
 )
 

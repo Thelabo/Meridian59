@@ -110,6 +110,16 @@ add_module(merintr
     "${MODULE_DIR}/merintr/merintr.def"
 )
 
+# ---- intro ----
+set(INTRO_SOURCES
+    ${MODULE_DIR}/intro/intro.c
+)
+add_module(intro
+    "${INTRO_SOURCES}"
+    "${MODULE_DIR}/intro/intro.rc"
+    "${MODULE_DIR}/intro/intro.def"
+)
+
 # ---- char ----
 set(CHAR_SOURCES
     ${MODULE_DIR}/char/charpick.c
